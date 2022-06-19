@@ -1,0 +1,592 @@
+<list>
+  <codeTemplateLibrary version="3.4.0">
+    <id>0e6800ae-6d84-4245-9e09-2c1a2f28d8fc</id>
+    <name>Common</name>
+    <revision>2</revision>
+    <lastModified>
+      <time>1461958209069</time>
+      <timezone>America/Los_Angeles</timezone>
+    </lastModified>
+    <description></description>
+    <includeNewChannels>true</includeNewChannels>
+    <enabledChannelIds>
+      <string>c33e2ab9-4947-4a9c-a086-f94a0ab6331f</string>
+      <string>f3853b12-9d89-4103-a29b-8b938c30466f</string>
+      <string>6471c495-addd-4cf4-a834-e7f9eb93045a</string>
+    </enabledChannelIds>
+    <disabledChannelIds/>
+    <codeTemplates>
+      <codeTemplate version="3.4.0">
+        <id>43f73dbc-f73d-4178-9aa0-b451c05922e2</id>
+        <name>Check if String contains</name>
+        <revision>1</revision>
+        <lastModified>
+          <time>1461944105596</time>
+          <timezone>America/Los_Angeles</timezone>
+        </lastModified>
+        <type>COMPILED_CODE</type>
+        <contextSet>
+          <delegate>
+            <contextType>CHANNEL_UNDEPLOY</contextType>
+            <contextType>GLOBAL_DEPLOY</contextType>
+            <contextType>CHANNEL_ATTACHMENT</contextType>
+            <contextType>CHANNEL_DEPLOY</contextType>
+            <contextType>CHANNEL_PREPROCESSOR</contextType>
+            <contextType>GLOBAL_POSTPROCESSOR</contextType>
+            <contextType>DESTINATION_DISPATCHER</contextType>
+            <contextType>CHANNEL_POSTPROCESSOR</contextType>
+            <contextType>CHANNEL_BATCH</contextType>
+            <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+            <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+            <contextType>GLOBAL_UNDEPLOY</contextType>
+            <contextType>SOURCE_RECEIVER</contextType>
+            <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+            <contextType>GLOBAL_PREPROCESSOR</contextType>
+          </delegate>
+        </contextSet>
+        <code>/**
+	To verify if one string (source) contains another string (target).
+
+	@param {String} arg1 - target string to lookup in the source string
+	@return {String} return true if the source string contains the target string
+*/
+String.prototype.contains = function(arg1) {
+	
+	return this.indexOf(arg1) &gt; -1;
+		
+};</code>
+      </codeTemplate>
+      <codeTemplate version="3.4.0">
+        <id>6a420042-a38d-4d6b-8567-d0290086256a</id>
+        <name>Check if String contains HTTP code</name>
+        <revision>2</revision>
+        <lastModified>
+          <time>1461958209349</time>
+          <timezone>America/Los_Angeles</timezone>
+        </lastModified>
+        <type>COMPILED_CODE</type>
+        <contextSet>
+          <delegate>
+            <contextType>GLOBAL_DEPLOY</contextType>
+            <contextType>CHANNEL_UNDEPLOY</contextType>
+            <contextType>CHANNEL_ATTACHMENT</contextType>
+            <contextType>CHANNEL_DEPLOY</contextType>
+            <contextType>CHANNEL_PREPROCESSOR</contextType>
+            <contextType>GLOBAL_POSTPROCESSOR</contextType>
+            <contextType>CHANNEL_POSTPROCESSOR</contextType>
+            <contextType>DESTINATION_DISPATCHER</contextType>
+            <contextType>CHANNEL_BATCH</contextType>
+            <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+            <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+            <contextType>GLOBAL_UNDEPLOY</contextType>
+            <contextType>SOURCE_RECEIVER</contextType>
+            <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+            <contextType>GLOBAL_PREPROCESSOR</contextType>
+          </delegate>
+        </contextSet>
+        <code>/**
+	To verify if the given string contains HTTP status code.
+
+	@param - no parameter
+	@return {String} return true if the string contains the HTTP status code, false otherwise
+*/
+
+function isHttpCode2xx(arg1) {
+	var code2xx = [&apos;200&apos;,&apos;201&apos;,&apos;202&apos;,&apos;203&apos;,&apos;204&apos;,&apos;205&apos;,&apos;206&apos;,&apos;207&apos;,&apos;208&apos;];	
+	var length = code2xx.length;
+	
+	while(length--) {
+   		if (arg1.indexOf(code2xx[length]) &gt; -1) {
+       		return true;
+   		}   		
+	}
+	return false;
+}
+
+function isHttpCode4xx(arg1) {
+	var code4xx = [&apos;400&apos;,&apos;401&apos;,&apos;402&apos;,&apos;403&apos;,&apos;404&apos;,&apos;405&apos;,&apos;406&apos;,&apos;407&apos;,&apos;408&apos;,&apos;409&apos;,&apos;410&apos;,&apos;411&apos;,&apos;412&apos;,&apos;413&apos;,&apos;414&apos;,&apos;415&apos;,&apos;416&apos;,&apos;417&apos;,&apos;429&apos;,&apos;431&apos;,&apos;451&apos;];	
+	var length = code4xx.length;
+	
+	while(length--) {
+   		if (arg1.indexOf(code4xx[length]) &gt; -1) {
+       		return true;
+   		}   		
+	}
+	return false;
+}
+
+function isHttpCode5xx(arg1) {
+	var code5xx = [&apos;500&apos;,&apos;501&apos;,&apos;502&apos;,&apos;503&apos;,&apos;504&apos;,&apos;505&apos;,&apos;506&apos;,&apos;510&apos;,&apos;511&apos;];	
+	var length = code5xx.length;
+	
+	while(length--) {
+   		if (arg1.indexOf(code5xx[length]) &gt; -1) {
+       		return true;
+   		}   		
+	}
+	return false;
+}
+</code>
+      </codeTemplate>
+      <codeTemplate version="3.4.0">
+        <id>42dbc1c3-72e4-4ece-a6b8-5cd188446027</id>
+        <name>Convert JSON date to HL7v2 date</name>
+        <revision>1</revision>
+        <lastModified>
+          <time>1461944106441</time>
+          <timezone>America/Los_Angeles</timezone>
+        </lastModified>
+        <type>FUNCTION</type>
+        <contextSet>
+          <delegate>
+            <contextType>CHANNEL_UNDEPLOY</contextType>
+            <contextType>GLOBAL_DEPLOY</contextType>
+            <contextType>CHANNEL_ATTACHMENT</contextType>
+            <contextType>CHANNEL_DEPLOY</contextType>
+            <contextType>CHANNEL_PREPROCESSOR</contextType>
+            <contextType>GLOBAL_POSTPROCESSOR</contextType>
+            <contextType>DESTINATION_DISPATCHER</contextType>
+            <contextType>CHANNEL_POSTPROCESSOR</contextType>
+            <contextType>CHANNEL_BATCH</contextType>
+            <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+            <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+            <contextType>GLOBAL_UNDEPLOY</contextType>
+            <contextType>SOURCE_RECEIVER</contextType>
+            <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+            <contextType>GLOBAL_PREPROCESSOR</contextType>
+          </delegate>
+        </contextSet>
+        <code>/**
+	To convert JSON date/time format to HL7v2 date only format.
+
+	@param {String} datetime - JSON date/time (yyyy-MM-ddThh:mm:ss.sss-00:00) or (yyyy-MM-dd)
+	@return {String} return HL7v2 date (yyyyMMdd)
+*/
+function convertToHL7v2Date(datetime) { 
+
+	var date = datetime.toString().match(/\d{4}\-\d{2}\-\d{2}/);
+	return ((date.length &gt; 0) ? date[0].replace(/\-/g,&apos;&apos;) : date.replace(/\-/g,&apos;&apos;));
+	
+};</code>
+      </codeTemplate>
+      <codeTemplate version="3.4.0">
+        <id>5b60cf28-571b-4aa8-94fe-d3cdf069471b</id>
+        <name>Convert JSON datetime to HL7v2 datetime</name>
+        <revision>1</revision>
+        <lastModified>
+          <time>1461944106015</time>
+          <timezone>America/Los_Angeles</timezone>
+        </lastModified>
+        <type>FUNCTION</type>
+        <contextSet>
+          <delegate>
+            <contextType>CHANNEL_UNDEPLOY</contextType>
+            <contextType>GLOBAL_DEPLOY</contextType>
+            <contextType>CHANNEL_ATTACHMENT</contextType>
+            <contextType>CHANNEL_DEPLOY</contextType>
+            <contextType>CHANNEL_PREPROCESSOR</contextType>
+            <contextType>GLOBAL_POSTPROCESSOR</contextType>
+            <contextType>DESTINATION_DISPATCHER</contextType>
+            <contextType>CHANNEL_POSTPROCESSOR</contextType>
+            <contextType>CHANNEL_BATCH</contextType>
+            <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+            <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+            <contextType>GLOBAL_UNDEPLOY</contextType>
+            <contextType>SOURCE_RECEIVER</contextType>
+            <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+            <contextType>GLOBAL_PREPROCESSOR</contextType>
+          </delegate>
+        </contextSet>
+        <code>/**
+	To convert JSON date/time format to HL7v2 date only format.
+	Possible formats:
+	&quot;2016-01-01T00:00:00.000Z&quot;	JavaScript built-in JSON object
+	&quot;2016-01-01T00:00:00-00:00&quot;	ISO 8601
+
+	@param {String} datetime - JSON date/time with offset (yyyy-MM-ddThh:mm:ss.sss-/+00:00) or (yyyy-MM-dd)
+	@return {String} return HL7v2 DTM date type
+*/
+function convertToHL7v2DateTime(datetime) { 
+
+	var date = [];
+	var hl7Date = &quot;&quot;;
+	var timeZome = &quot;&quot;;
+
+	if (datetime.indexOf(&quot;T&quot;) &gt; -1) {
+
+		var zone = datetime.toString().slice(datetime.indexOf(&quot;T&quot;) + 1);
+		if (zone.indexOf(&quot;+&quot;) &gt; 0) timeZone = &quot;+&quot;;
+		if (zone.indexOf(&quot;-&quot;) &gt; 0) timeZone = &quot;-&quot;;
+
+		if (datetime.indexOf(&quot;Z&quot;) &gt; 0) {
+			date = datetime.toString().split(/\-|\+|T|:|\./g);
+		} else {
+			date = datetime.toString().split(/\-|\+|T|:/g);
+		}
+		
+		for (var i=0; i &lt; 6; i++) {			
+			hl7Date += date[i]; 
+		}
+		
+		var offset = date.slice(6);
+		for (var i=0; i &lt; offset.length; i++) {
+			timeZone += offset[i];
+		}
+
+		return hl7Date + timeZone;
+
+	} else {
+		return convertToHL7v2Date(datetime);
+	}
+};</code>
+      </codeTemplate>
+      <codeTemplate version="3.4.0">
+        <id>d014f2fc-cf80-47ad-9de8-6c84807e2f70</id>
+        <name>Extract JSON node data</name>
+        <revision>1</revision>
+        <lastModified>
+          <time>1461944105767</time>
+          <timezone>America/Los_Angeles</timezone>
+        </lastModified>
+        <type>FUNCTION</type>
+        <contextSet>
+          <delegate>
+            <contextType>CHANNEL_UNDEPLOY</contextType>
+            <contextType>GLOBAL_DEPLOY</contextType>
+            <contextType>CHANNEL_ATTACHMENT</contextType>
+            <contextType>CHANNEL_DEPLOY</contextType>
+            <contextType>CHANNEL_PREPROCESSOR</contextType>
+            <contextType>GLOBAL_POSTPROCESSOR</contextType>
+            <contextType>DESTINATION_DISPATCHER</contextType>
+            <contextType>CHANNEL_POSTPROCESSOR</contextType>
+            <contextType>CHANNEL_BATCH</contextType>
+            <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+            <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+            <contextType>GLOBAL_UNDEPLOY</contextType>
+            <contextType>SOURCE_RECEIVER</contextType>
+            <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+            <contextType>GLOBAL_PREPROCESSOR</contextType>
+          </delegate>
+        </contextSet>
+        <code>/**
+	Validates if node is not NULL or &quot;undefined&quot;. If the given node is an array, return a string of values.
+
+	@param {String} node - node to extract the data from
+	@return {String} return given node value or empty string if such node does not exist
+*/
+function extract(node) {
+
+	try {
+		var result = &quot;&quot;;
+
+		if (null == node) return result;
+		
+		if ((typeof node) !== &quot;undefined&quot;) {
+
+			if (Object.prototype.toString.call(node) === &apos;[object Array]&apos;) {
+				result = org.apache.commons.lang3.StringUtils.join(node, &quot; &quot;)
+			} else 
+				result = node;
+		}
+	} finally {
+		return result.toString().trim();
+	}
+}
+
+</code>
+      </codeTemplate>
+      <codeTemplate version="3.4.0">
+        <id>a3f85cc2-9b95-45a9-9cb1-937197e09cdc</id>
+        <name>Verify JSON node for existance</name>
+        <revision>1</revision>
+        <lastModified>
+          <time>1461944105893</time>
+          <timezone>America/Los_Angeles</timezone>
+        </lastModified>
+        <type>FUNCTION</type>
+        <contextSet>
+          <delegate>
+            <contextType>CHANNEL_UNDEPLOY</contextType>
+            <contextType>GLOBAL_DEPLOY</contextType>
+            <contextType>CHANNEL_ATTACHMENT</contextType>
+            <contextType>CHANNEL_DEPLOY</contextType>
+            <contextType>CHANNEL_PREPROCESSOR</contextType>
+            <contextType>GLOBAL_POSTPROCESSOR</contextType>
+            <contextType>DESTINATION_DISPATCHER</contextType>
+            <contextType>CHANNEL_POSTPROCESSOR</contextType>
+            <contextType>CHANNEL_BATCH</contextType>
+            <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+            <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+            <contextType>GLOBAL_UNDEPLOY</contextType>
+            <contextType>SOURCE_RECEIVER</contextType>
+            <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+            <contextType>GLOBAL_PREPROCESSOR</contextType>
+          </delegate>
+        </contextSet>
+        <code>/**
+	Verify if the given node exists.
+
+	@param {String} node - node to verify for existance
+	@return {String} return true if the given node exists, false otherwise
+*/
+function keyExists(node) {
+	return ( ((typeof node) !== &quot;undefined&quot;) &amp;&amp; ((typeof node) !== null) );
+}</code>
+      </codeTemplate>
+    </codeTemplates>
+  </codeTemplateLibrary>
+  <codeTemplateLibrary version="3.4.0">
+    <id>394664c0-d536-4310-970e-181dc03ee7da</id>
+    <name>Conversions</name>
+    <revision>1</revision>
+    <lastModified>
+      <time>1461944105398</time>
+      <timezone>America/Los_Angeles</timezone>
+    </lastModified>
+    <description></description>
+    <includeNewChannels>true</includeNewChannels>
+    <enabledChannelIds>
+      <string>c33e2ab9-4947-4a9c-a086-f94a0ab6331f</string>
+      <string>f3853b12-9d89-4103-a29b-8b938c30466f</string>
+      <string>6471c495-addd-4cf4-a834-e7f9eb93045a</string>
+    </enabledChannelIds>
+    <disabledChannelIds/>
+    <codeTemplates>
+      <codeTemplate version="3.4.0">
+        <id>3a388aa0-c0ba-460c-b790-1c42c081c84d</id>
+        <name>Convert FHIR codes to HL7v2 codes</name>
+        <revision>1</revision>
+        <lastModified>
+          <time>1461944106589</time>
+          <timezone>America/Los_Angeles</timezone>
+        </lastModified>
+        <type>FUNCTION</type>
+        <contextSet>
+          <delegate>
+            <contextType>CHANNEL_UNDEPLOY</contextType>
+            <contextType>GLOBAL_DEPLOY</contextType>
+            <contextType>CHANNEL_ATTACHMENT</contextType>
+            <contextType>CHANNEL_DEPLOY</contextType>
+            <contextType>CHANNEL_PREPROCESSOR</contextType>
+            <contextType>GLOBAL_POSTPROCESSOR</contextType>
+            <contextType>DESTINATION_DISPATCHER</contextType>
+            <contextType>CHANNEL_POSTPROCESSOR</contextType>
+            <contextType>CHANNEL_BATCH</contextType>
+            <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+            <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+            <contextType>GLOBAL_UNDEPLOY</contextType>
+            <contextType>SOURCE_RECEIVER</contextType>
+            <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+            <contextType>GLOBAL_PREPROCESSOR</contextType>
+          </delegate>
+        </contextSet>
+        <code>/**
+	Map FHIR codes to corresponding HL7v2.6 codes using the Table number.
+
+	@param {String} FhirCode - FHIR code
+	@param {String} tableName - HL7v2.6 Table Name	
+	@return {String} return corresponsing HL7v2.6 code if known or &quot;Unknown&quot; result
+*/
+function convertToHL7v2Table(FhirCode,tableNumber) {
+
+	var code = &apos;&apos;;
+	if (&apos;undefined&apos; !== typeof FhirCode &amp;&amp; null !== FhirCode) {
+		code = FhirCode.toString().toLowerCase();	
+	}
+	
+
+	switch(tableNumber) {
+		case &quot;0001&quot;:
+			if (&apos;female&apos; == code || &apos;f&apos; == code) return &apos;F&apos;; else
+			if (&apos;male&apos; == code || &apos;m&apos; == code) return &apos;M&apos;; else
+			if (&apos;other&apos; == code) return &apos;O&apos;; else
+			return &apos;U&apos;; 			
+		break;
+
+		case &quot;0004&quot;:
+			// http://hl7.org/fhir/encounter-class
+			if (&apos;emergency&apos; == code) return &apos;E&apos;; else				
+			if (&apos;inpatient&apos; == code) return &apos;I&apos;; else
+			if (&apos;outpatient&apos; == code) return &apos;O&apos;; else
+			return &quot;U&quot;;
+		break;
+
+		case &quot;0190&quot;:
+			// http://hl7.org/fhir/ValueSet/address-type
+			if (&apos;postal&apos; == code) return &apos;H&apos;; else				
+			if (&apos;physical&apos; == code) return &apos;P&apos;; else
+			if (&apos;both&apos; == code) return &apos;H&apos;; else
+			return &quot;M&quot;;
+		break;		
+
+		case &quot;0201&quot;:
+			// http://hl7.org/fhir/ValueSet/contact-point-use
+			if (&apos;home&apos; == code) return &apos;PRN&apos;; else				
+			if (&apos;work&apos; == code) return &apos;WPN&apos;; else
+			if (&apos;mobile&apos; == code) return &apos;PRS&apos;; else
+			if (&apos;temp&apos; == code) return &apos;TMP&apos;; else			
+			if (&apos;old&apos; == code) return &apos;OLD&apos;; else
+			return &quot;PRN&quot;;
+		break;	
+
+		case &quot;0202&quot;:
+			// http://hl7.org/fhir/contact-point-system
+			if (&apos;phone&apos; == code) return &apos;PH&apos;; else				
+			if (&apos;fax&apos; == code) return &apos;FX&apos;; else
+			if (&apos;pager&apos; == code) return &apos;BP&apos;; else
+			if (&apos;email&apos; == code) return &apos;Internet&apos;; else
+			return &quot;PH&quot;;
+		break;	
+
+		case &quot;0063&quot;:
+			// http://hl7.org/fhir/ValueSet/patient-contact-relationship
+			// (SN) Partial list
+			if (&apos;parent&apos; == code) return &apos;PAR&apos;; else
+			if (&apos;MTH&apos; == code) return &apos;MTH&apos;; else
+			if (&apos;FTH&apos; == code) return &apos;FTH&apos;; else	
+			if (&apos;caregiver&apos; == code) return &apos;CGV&apos;; else
+			if (&apos;SPS&apos; == code) return &apos;SPO&apos;; else
+			if (&apos;CHILD&apos; == code) return &apos;CHD&apos;; else
+			if (&apos;GRNDCHILD&apos; == code) return &apos;GCH&apos;; else
+			if (&apos;GRPRN&apos; == code) return &apos;GRP&apos;; else
+			if (&apos;SIB&apos; == code) return &apos;SIB&apos;; else
+			if (&apos;BRO&apos; == code) return &apos;BRO&apos;; else
+			if (&apos;SIS&apos; == code) return &apos;SIS&apos;; else
+			if (&apos;friend&apos; == code) return &apos;FND&apos;; else
+			if (&apos;ONESELF&apos; == code) return &apos;SEL&apos;; else
+			if (&apos;emergency&apos; == code) return &apos;EMC&apos;; else
+			return &apos;UNK&apos;;		
+		break;
+		default:
+			return &apos;U&apos;;
+	}
+
+
+}</code>
+      </codeTemplate>
+    </codeTemplates>
+  </codeTemplateLibrary>
+  <codeTemplateLibrary version="3.4.0">
+    <id>833c5444-6415-4d62-a76b-caa39589c2fa</id>
+    <name>Mirth</name>
+    <revision>1</revision>
+    <lastModified>
+      <time>1461944105353</time>
+      <timezone>America/Los_Angeles</timezone>
+    </lastModified>
+    <description></description>
+    <includeNewChannels>true</includeNewChannels>
+    <enabledChannelIds>
+      <string>c33e2ab9-4947-4a9c-a086-f94a0ab6331f</string>
+      <string>f3853b12-9d89-4103-a29b-8b938c30466f</string>
+      <string>6471c495-addd-4cf4-a834-e7f9eb93045a</string>
+    </enabledChannelIds>
+    <disabledChannelIds/>
+    <codeTemplates>
+      <codeTemplate version="3.4.0">
+        <id>b9eceb1d-8abb-4931-8247-209d70519f99</id>
+        <name>Fix HL7v2 Node Order</name>
+        <revision>1</revision>
+        <lastModified>
+          <time>1461944106170</time>
+          <timezone>America/Los_Angeles</timezone>
+        </lastModified>
+        <type>FUNCTION</type>
+        <contextSet>
+          <delegate>
+            <contextType>CHANNEL_UNDEPLOY</contextType>
+            <contextType>GLOBAL_DEPLOY</contextType>
+            <contextType>CHANNEL_ATTACHMENT</contextType>
+            <contextType>CHANNEL_DEPLOY</contextType>
+            <contextType>CHANNEL_PREPROCESSOR</contextType>
+            <contextType>GLOBAL_POSTPROCESSOR</contextType>
+            <contextType>DESTINATION_DISPATCHER</contextType>
+            <contextType>CHANNEL_POSTPROCESSOR</contextType>
+            <contextType>CHANNEL_BATCH</contextType>
+            <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+            <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+            <contextType>GLOBAL_UNDEPLOY</contextType>
+            <contextType>SOURCE_RECEIVER</contextType>
+            <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+            <contextType>GLOBAL_PREPROCESSOR</contextType>
+          </delegate>
+        </contextSet>
+        <code>/*
+
+	See issue: http://www.mirthcorp.com/community/issues/browse/MIRTH-625
+
+	Author: Nick Rupley
+	Date Modified: 4/18/2012
+
+	fixHL7NodeOrder: Returns a new E4X node where the order of all siblings and descendants have been fixed as per the Mirth HL7 dot notation convention.
+
+	Arguments
+	---------
+		Required
+		--------
+		node: The node to be fixed. 
+*/
+function fixHL7NodeOrder(node) {
+	// Create output node
+	var newNode = new XML();
+	// In case the node is an XMLList of multiple siblings, loop through each sibling
+	for each (sibling in node) {
+		// Create new sibling node
+		var newSibling = new XML(&apos;&lt;&apos;+sibling.name().toString()+&apos;/&gt;&apos;);
+		// Iterate through each child node
+		for each (child in sibling.children())
+			// If the child has its own children, then recursively fix the node order of the child
+			if (child.hasComplexContent())
+				newSibling.appendChild(fixHL7NodeOrder(child));
+			// If the child doesn&apos;t have its own children, then just add the child to the new sibling node
+			else
+				newSibling.appendChild(child);
+		// After recursively fixing all of the child nodes, now we&apos;ll fix the current node
+		newNode += sortHL7Node(newSibling);
+	}
+	// Return the fixed node
+	return newNode;
+}
+
+function sortHL7Node(node) {
+	// If the node has no children, then there&apos;s nothing to sort
+	if (node.hasSimpleContent())
+		return node;
+	// Create new output node
+	var newNode = new XML(&apos;&lt;&apos;+node.name().toString()+&apos;/&gt;&apos;);
+	// Iterate through each child in the node
+	for each (child in node.children()) {
+		// If the child has a QName, then we can sort on it
+		if (child.name()) {
+			// Get the current &quot;index&quot; of the child. Id est, if the QName is PID.3.1, then the index is 1
+			curChildIndex = parseInt(child.name().toString().substring(child.name().toString().lastIndexOf(&apos;.&apos;)+1),10);
+			// Boolean placeholder
+			var inserted = false;
+			// Iterate through each child currently in the NEW node
+			for (var i = 0; i &lt;= newNode.children().length()-1; i++) {
+				// Get the index of the child of the new node
+				loopChildIndex = parseInt(newNode.child(i).name().toString().substring(newNode.child(i).name().toString().lastIndexOf(&apos;.&apos;)+1),10);
+				// If the child we want to insert has a lower index then the current child of the new node, then we&apos;re going to insert the child 
+				// right before the current newNode child
+				if (curChildIndex &lt; loopChildIndex) {
+					// Insert the child
+					newNode.insertChildBefore(newNode.children()[i],child);
+					// Set our flag, indicating that an insertion was made
+					inserted = true;
+					// No need to continue iteration
+					break;
+				}
+			}
+			// If no insertion was made, then the index of the child we want to insert is greater than or equal to all of the
+			// indices of the children that have already been inserted in newNode. So, we&apos;ll just append the child to the end.
+			if (!inserted)
+				newNode.appendChild(child);
+		}
+	}
+	// Return the sorted HL7 node
+	return newNode;
+}</code>
+      </codeTemplate>
+    </codeTemplates>
+  </codeTemplateLibrary>
+</list>

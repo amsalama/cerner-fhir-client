@@ -1,0 +1,20 @@
+Import --> 
+1- channel  : cerner open-endpoint.xml
+2- code template
+3- configuration mapping
+4- global script 
+
+
+change cerner url to https://fhir-open.cerner.com/dstu2/ec2458f2-1e24-41c8-b71b-0e701af7583d
+in configuration mapping
+
+
+deploy  channel --> 
+select   channel from dashboard and right click send message 
+{
+
+	"id" : 1
+}
+
+
+expected output server-log-cerner-openendpoint.png , server-log-cerner-openendpoint-1.png , server-log-cerner-openendpoint-2.png
